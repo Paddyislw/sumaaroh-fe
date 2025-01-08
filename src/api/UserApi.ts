@@ -6,7 +6,7 @@ import { CreateUserPayload, CreateUserResponse, User } from "../types/types";
 export const useUserApi = () => {
   const createUser = async (payload: CreateUserPayload): Promise<User> => {
     const response = await axios.post<CreateUserResponse>(
-      "http://localhost:3000/api/users",
+      `${import.meta.env.VITE_API_URL}/api/users`,
       payload
     );
     return response.data.data;

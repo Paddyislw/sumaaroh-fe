@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 export const usePreferencesApi = (email: string) => {
     const createPreference = async (payload: PreferencePayload): Promise<Preference> => {
       const response = await axios.post<PreferenceResponse>(
-        `http://localhost:3000/api/preferences/${email}`,
+        `${import.meta.env.VITE_API_URL}/api/preferences/${email}`,
         payload,
         {
           headers: {
