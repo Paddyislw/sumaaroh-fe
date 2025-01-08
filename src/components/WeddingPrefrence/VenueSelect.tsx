@@ -32,7 +32,7 @@ export default function VenueSelect({
   setUserPreferences,
 }: Props) {
   const navigate = useNavigate();
-  const { userEmail,clearUserEmail } = useUser();
+  const { userEmail } = useUser();
   const { 
     savePreference, 
     isSaving, 
@@ -49,7 +49,6 @@ export default function VenueSelect({
 
   useEffect(() => {
     if (isSuccess) {
-      clearUserEmail()
       navigate("/confirmation");
     }
   }, [isSuccess, navigate]);
