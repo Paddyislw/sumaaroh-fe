@@ -4,12 +4,14 @@ import Background from "../../assets/Background1.png";
 import Sun from '../../assets/Sun.png'
 import Logo from "../global/Logo";
 import { Link } from "react-router-dom";
+import { useUser } from "../../context/UserContext";
 
 type Props = {
     startAnimation:boolean
 }
 
 export default function FreeProposal({ startAnimation = false }:Props) {
+  const {userName} = useUser()
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -63,9 +65,9 @@ export default function FreeProposal({ startAnimation = false }:Props) {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: startAnimation ? 1 : 0, x: startAnimation ? 0 : 20 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-800 text-center md:text-left"
+              className="text-xxl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-800 text-center md:text-left"
             >
-              Anita, let our expert planners craft your special day
+              {userName}, let our expert planners craft your special day
             </motion.h1>
 
             <div className="space-y-4 md:space-y-6">
@@ -77,10 +79,10 @@ export default function FreeProposal({ startAnimation = false }:Props) {
               >
                 <img className="w-6 h-6 text-[#FFD700] flex-shrink-0 mt-1" src={Sun} alt="Sun icon" />
                 <div>
-                  <h3 className="font-semibold text-gray-800 mb-2 text-lg md:text-xl">
+                  <h3 className="font-semibold text-gray-800 mb-2 text-lg">
                     Unlock best venues, decors & more
                   </h3>
-                  <p className="text-gray-600 font-semibold text-base md:text-lg">
+                  <p className="text-gray-600 font-semibold text-base">
                     Tell us about your dream day & get a perfect proposal in
                     your budget for FREE
                   </p>
@@ -95,10 +97,10 @@ export default function FreeProposal({ startAnimation = false }:Props) {
               >
                 <img className="w-6 h-6 text-[#FFD700] flex-shrink-0 mt-1" src={Sun} alt="Sun icon" />
                 <div>
-                  <h3 className="font-semibold text-gray-800 mb-2 text-lg md:text-xl">
+                  <h3 className="font-semibold text-gray-800 mb-2 text-lg">
                     800+ Flawless Celebrations
                   </h3>
-                  <p className="text-gray-600 font-semibold text-base md:text-lg">
+                  <p className="text-gray-600 font-semibold text-base">
                     Enjoy a perfect, stress-free wedding from the first visit to
                     the final goodbyes
                   </p>

@@ -15,7 +15,7 @@ export default function UserDetailsPage() {
 
   const navigate = useNavigate();
   const { createUser, isCreatingUser, isCreateSuccess, isCreateError } = useUserApi();
-  const { setUserEmail } = useUser();
+  const { setUserEmail,setUserName } = useUser();
 
   const validateName = (value: string) => {
     if (value.trim().length < 2) {
@@ -44,9 +44,10 @@ export default function UserDetailsPage() {
   useEffect(() => {
     if (isCreateSuccess) {
       setUserEmail(email);
+      setUserName(name)
       navigate("/free-proposal");
     }
-  }, [isCreateSuccess, navigate, email, setUserEmail]);
+  }, [isCreateSuccess, navigate, email, setUserEmail,setUserName,name]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

@@ -1,26 +1,32 @@
-import  { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, ReactNode } from 'react';
 
 interface UserContextType {
   userEmail: string;
+  userName: string;
   setUserEmail: (email: string) => void;
-  clearUserEmail: () => void;
+  setUserName: (name: string) => void;
+  clearUser: () => void;
 }
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
 export function UserProvider({ children }: { children: ReactNode }) {
   const [userEmail, setUserEmail] = useState('');
+  const [userName, setUserName] = useState('');
 
-  const clearUserEmail = () => {
+  const clearUser = () => {
     setUserEmail('');
+    setUserName('');
   };
 
   return (
     <UserContext.Provider
       value={{
         userEmail,
+        userName,
         setUserEmail,
-        clearUserEmail,
+        setUserName,
+        clearUser,
       }}
     >
       {children}

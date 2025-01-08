@@ -1,7 +1,18 @@
+import { useEffect } from "react";
+import { useUser } from "./context/UserContext";
 import AppRoutes from "./routes/AppRoutes";
+import { useNavigate } from "react-router-dom";
 
 const App = () => {
-  console.log('test',import.meta.env.VITE_API_URL)
+  const {userEmail,userName} = useUser()
+  const navigate = useNavigate()
+
+  useEffect(()=>{
+    if(!userEmail ||!userName){
+      navigate('/user-details')
+    }
+  },[userEmail,userName])
+  
   return <AppRoutes />;
 };
 
